@@ -1,5 +1,5 @@
-FROM python:3.8
-LABEL maintainer="noemail@website.domain"
+FROM python:3.10
+LABEL Aidan McCoy "acsm3002@gmail.com"
 RUN apt-get update -y
 COPY . /app
 WORKDIR /app

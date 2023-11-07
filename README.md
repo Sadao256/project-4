@@ -1,4 +1,10 @@
 # UOCIS322 - Project 4 #
+# Aidan McCoy
+
+# Description: the point of this project is implemnt a time calculation algoirthim from a website and untilize for own project so that we 
+# can track the amount time for a distance run at a minimum speed and maximum speed. We will also be implementing testcases for this algorithim
+# will be uning to make sure it works correctly
+
 You'll learn how to write test cases and test your code, along with more JQuery.
 
 ## Overview
