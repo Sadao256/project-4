@@ -1,8 +1,6 @@
 """
 Nose tests for acp_times.py
-
 Write your tests HERE AND ONLY HERE.
-
 """
 
 import nose    # Testing framework
