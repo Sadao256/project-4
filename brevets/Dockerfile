@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.8
 LABEL Aidan McCoy "acsm3002@gmail.com"
 RUN apt-get update -y
 COPY . /app
