@@ -45,22 +45,33 @@ def page_not_found(error):
 @app.route("/_calc_times")
 def _calc_times():
     """
-    Calculates open/close times from miles, using rules
+    Calculates open/close times from kilometers, using rules
     described at https://rusa.org/octime_alg.html.
-    Expects one URL-encoded argument, the number of miles.
+    Expects three URL-encoded arguments: km, start_time, and brevet_dist.
     """
     app.logger.debug("Got a JSON request")
+    
+    # Get the Km from the Ajax request
     km = request.args.get('km', 999, type=float)
-    app.logger.debug("km={}".format(km))
-    app.logger.debug("request.args: {}".format(request.args))
-    # FIXME!
-    # Right now, only the current time is passed as the start time
-    # and control distance is fixed to 200
-    # You should get these from the webpage!
-    open_time = acp_times.open_time(km, 200, arrow.now().isoformat).format('YYYY-MM-DDTHH:mm')
-    close_time = acp_times.close_time(km, 200, arrow.now().isoformat).format('YYYY-MM-DDTHH:mm')
+    
+    # Get the start time from the Ajax request
+    start_time_str = request.args.get('start_time')
+
+    # Get the Brevet Distance from the Ajax request
+    brevet_dist = request.args.get('brevet_dist', 200, type=int)
+    
+    # Convert the start_time string to an arrow object
+    start_time = arrow.get(start_time_str)
+
+    # calculate the open time with the arguements km, brevet_dist, start_time using open_time function in the file acp_times
+    open_time = acp_times.open_time(km, brevet_dist, start_time).format('YYYY-MM-DDTHH:mm')
+
+    # calculate the close time with the arguements km, brevet_dist, start_time using close_time function in the file acp_times
+    close_time = acp_times.close_time(km, brevet_dist, start_time).format('YYYY-MM-DDTHH:mm')
+
     result = {"open": open_time, "close": close_time}
     return flask.jsonify(result=result)
+
 
 
 #############
