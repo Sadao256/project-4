@@ -15,9 +15,13 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
 
     time_min = 0
     index = 0
+    
+    if control_dist_km > brevet_dist_km:
+        control_dist_km = brevet_dist_km
 
     if control_dist_km == 0:
         return brevet_start_time
+
     else:
 
         while control_dist_km > 200:
@@ -36,6 +40,9 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
 
 def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     time_max = 0
+
+    if control_dist_km > brevet_dist_km:
+        control_dist_km = brevet_dist_km
 
     if brevet_dist_km == 200 and control_dist_km == 200:
         # Calculate the time it takes to reach the control point
@@ -56,6 +63,7 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
         return close_time_calc
 
     index = 0
+
     if control_dist_km <= 60:
         # For controls within the first 60 kilometers
         time_max = (control_dist_km / 20) + 1
@@ -77,4 +85,19 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
 
         return close_time_calc
 
+"""
+    elif (brevet_dist_km * 1.2)>= control_dist_km > brevet_dist_km:
+        while control_dist_km > 200:
+            time_max += 200 / speed_min[index]
+            control_dist_km -= 200
+            index += 1
+            
+        #calculate the close time9
+        time_max += (control_dist_km/speed_min[index])  
+        time_max = ((time_max*60) + .5)
 
+            # shift the the start time based on the maximum time needed going the fastest speed
+        close_time_calc = arrow.get(brevet_start_time).shift(minutes=time_max)
+
+        return close_time_calc 
+"""

@@ -1,8 +1,6 @@
 """
-
 Replacement for RUSA ACP brevet time calculator
 (see https://rusa.org/octime_acp.html)
-
 """
 
 import flask

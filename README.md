@@ -1,5 +1,4 @@
 # UOCIS322 - Project 4 #
-
 # Aidan McCoy
 
 # Description: the point of this project is implemnt a time calculation algoirthim from a website and untilize for own project so that we 

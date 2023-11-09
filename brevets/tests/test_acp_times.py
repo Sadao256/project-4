@@ -6,7 +6,7 @@ Write your tests HERE AND ONLY HERE.
 import nose    # Testing framework
 import logging
 import arrow
-import acp_times import open_time, close_time # important function open_time and close_time from acp_times
+from acp_times import open_time, close_time # important function open_time and close_time from acp_times
 
 logging.basicConfig(format='%(levelname)s:%(message)s',
                     level=logging.WARNING)
